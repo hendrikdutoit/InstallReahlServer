@@ -1,0 +1,21 @@
+log verbose "D:\Dropbox\Projects\InstallReahlServer\installReahlserver\InstallReahlServer.log"
+
+load "d:\Dropbox\Projects\InstallReahlServer\installreahlserver" sftp://root@%1//usr/local/share
+filter "InstallReahlServer_s?.sh;UpdateReahlServer_s?.sh;-Archive\;-VersionArchive\;-t\"
+option confirm:yes-to-all
+sync create-empty update:lt->rt
+
+load "d:\Dropbox\Projects\InstallReahlServer\installreahlserver" sftp://root@%2//mnt/rte_source/Projects/InstallReahlServer/installreahlserver
+filter "InstallReahlServer*.*;UpdateReahlServer*.*;*.txt;*.ini;-*.log;-Archive\;-VersionArchive\;-t\"
+option confirm:yes-to-all
+sync update:lt->rt
+
+#load d:\RealTimeEnv\.reahlworkspace\dist-egg D:\Dropbox\Lib\Wheels
+#filter "*.whl"
+#option confirm:yes-to-all
+#sync update:lt->rt
+
+load D:\Dropbox\Lib\Wheels sftp://root@%2//mnt/rte_Source/Lib/Wheels
+filter "*.whl;*.req;"
+option confirm:yes-to-all
+sync update:lt->rt

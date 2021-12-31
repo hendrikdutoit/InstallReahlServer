@@ -7,3 +7,5 @@
 #===================================================================
 termcolor
 beetools
+configparserext
+installit
