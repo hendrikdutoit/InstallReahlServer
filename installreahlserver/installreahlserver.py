@@ -637,7 +637,7 @@ class InstallReahlServer:
                     "LinuxUsers", self.user_prefix, p_prefix=True, p_split=True
                 )
             ]
-            success = self.inst_tls.delete_linux_users(users, p_crash=False)
+            success = self.inst_tls.delete_linux_users(users)
 
             list_to_del = [
                 Path("/etc", "uwsgi", "apps-enabled", "RealtimeeventsCo.ini"),
@@ -820,6 +820,10 @@ def init_logger():
     logger.addHandler(file_handle)
     logger.addHandler(console_handle)
     return logger
+
+
+def project_desc():
+    return _PROJ_DESC
 
 
 def read_args():
